@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operaciones Matemáticas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        input {
+            margin: 5px;
+            padding: 10px;
+            width: 80%;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head> 
+<link rel="stylesheet" href="style.css">
+<body>
+
+    <div class="container">
+        <h1>Tarea 4</h1>
+        <p>Operaciones: Ingrese dos números:</p>
+
+        <!-- Inputs para ingresar los dos números -->
+        <input type="number" id="num1" placeholder="Primer numero ">
+        <input type="number" id="num2" placeholder="Segundo numero ">
+        
+        <!-- Botón para realizar las operaciones -->
+        <button onclick="realizarOperaciones()">Calcular</button>
+
+        <!-- Contenedor para mostrar los resultados -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function realizarOperaciones() {
+            
+            let numero1 = parseFloat(document.getElementById("num1").value);
+            let numero2 = parseFloat(document.getElementById("num2").value);
+
+            
+            if (isNaN(numero1) || isNaN(numero2)) {
+                document.getElementById("result").innerHTML = "Por favor, ingrese números válidos.";
+                return;
+            }
+
+            
+            let resultados = [];
+
+            
+            for (let i = 1; i <= 5; i++) {
+                let resultado;
+                switch (i) {
+                    case 1:
+                        resultado = numero1 + numero2; 
+                        resultados.push(`Iteración ${i}: Suma = ${resultado}`);
+                        break;
+                    case 2:
+                        resultado = numero1 - numero2; 
+                        resultados.push(`Iteración ${i}: Resta = ${resultado}`);
+                        break;
+                    case 3:
+                        resultado = numero1 * numero2; 
+                        resultados.push(`Iteración ${i}: Multiplicación = ${resultado}`);
+                        break;
+                    case 4:
+                        if (numero2 !== 0) {
+                            resultado = numero1 / numero2; 
+                            resultados.push(`Iteración ${i}: División = ${resultado}`);
+                        } else {
+                            resultados.push(`Iteración ${i}: División = Error (división por cero)`);
+                        }
+                        break;
+                    case 5:
+                        if (numero2 !== 0) {
+                            resultado = numero1 % numero2; 
+                            resultados.push(`Iteración ${i}: Módulo = ${resultado}`);
+                        } else {
+                            resultados.push(`Iteración ${i}: Módulo = Error (división por cero)`);
+                        }
+                        break;
+                }
+            }
+
+            document.getElementById("result").innerHTML = resultados.join("<br>");
+        }
+    </script>
+
+</body>
+</html>
